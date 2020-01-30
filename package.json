@@ -1,0 +1,13 @@
+{
+  "name": "myapp-mapmysensor-client",
+  "version": "1.0.0",
+  "description": "An application that displays sensors, places and locations on maps and calculates optimal route to relief centres in case of emergency.",
+  "repository": "git@github.com:kaushalmeena1996/myapp-mapmysensor.git",
+  "author": "Kaushal Meena <kaushal.meena1996@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run dev:server && npm run dev:client",
+    "dev:client": "cd client && npm start",
+    "dev:server": "cd server && npm start"
+  }
+}
