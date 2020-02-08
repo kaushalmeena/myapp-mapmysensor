@@ -1,5 +1,5 @@
 {
-  "name": "myapp-mapmysensor-client",
+  "name": "myapp-mapmysensor",
   "version": "1.0.0",
   "description": "An application that displays sensors, places and locations on maps and calculates optimal route to relief centres in case of emergency.",
   "repository": "git@github.com:kaushalmeena1996/myapp-mapmysensor.git",

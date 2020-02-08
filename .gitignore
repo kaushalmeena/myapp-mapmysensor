@@ -1,7 +1,12 @@
 # dependencies
 node_modules/
 
+# logs
+npm-debug.log
+
+# nextjs
+.next
+dist
+
 # misc
 .DS_Store
-.env
-npm-debug.log
