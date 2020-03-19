@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import Link from 'next/link';
-import generateUniqueKey from '../../utils/generateUniqueKey';
+import { generateUniqueKey } from '../../utils';
 
 const PAGE_LINKS = [
   {

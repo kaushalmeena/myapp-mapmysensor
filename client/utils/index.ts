@@ -1,3 +1,15 @@
+import get from 'lodash/get';
+
+const getData = (
+  data: object,
+  path: string,
+  value = undefined,
+): object | number | string => get(data, path, value) || value;
+
+const generateUniqueKey = (): string => Math.random()
+  .toString(36)
+  .substr(2);
+
 const convertText = (text: string, textCase: string): string => {
   let result = '';
   if (typeof text === 'string') {
@@ -37,4 +49,8 @@ const convertText = (text: string, textCase: string): string => {
   return result;
 };
 
-export default convertText;
+export {
+  convertText,
+  getData,
+  generateUniqueKey
+}

@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core';
 import Link from 'next/link';
 import React from 'react';
-import generateUniqueKey from '../utils/generateUniqueKey';
+import { generateUniqueKey } from '../../utils';
 
 export interface Page {
   title: string;
