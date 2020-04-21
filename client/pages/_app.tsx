@@ -19,9 +19,8 @@ class MyApp extends App {
           {`
             body {
               margin: 0;
-              background-image: url("./public/assets/img/pattern.png");
+              background-image: url("./assets/img/pattern.png");
             }
-
             a {
               color: inherit;
               text-decoration: inherit;

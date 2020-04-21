@@ -5,16 +5,20 @@ import Header from '../components/common/Header';
 import RoutePage from '../components/Map';
 import themes from '../constants/themes';
 
-const THEME = createMuiTheme(themes.th003);
+const THEME = createMuiTheme(themes.th004);
+
+const PAGE_TITLE = 'Route';
 
 const Route = (): JSX.Element => (
   <>
     <Head>
-      <title>MapMySensor :: Route</title>
+      <title>
+        {`MapMySensor :: ${PAGE_TITLE}`}
+      </title>
       <meta name="theme-color" content={THEME.palette.primary.main} />
     </Head>
     <ThemeProvider theme={THEME}>
-      <Header />
+      <Header pageTitle={PAGE_TITLE} />
       <RoutePage />
     </ThemeProvider>
   </>

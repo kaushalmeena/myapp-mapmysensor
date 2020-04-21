@@ -1,62 +1,23 @@
-<p align="center">Webpack + TypeScript + React = ❤️</p>
-<p align="center">
-  <img src="https://img.shields.io/github/license/saltyshiomix/webpack-typescript-react-starter.svg" alt="Package License (MIT)">
-</p>
+# [Project : MapMySensor]
 
-As of Babel v7, now we can handle `.ts` or `.tsx` files same as `.js` or `.jsx` files like this:
+## [ Synopsis ]
 
-```js
-// webpack.config.js
+A web application that displays sensors, places and locations on maps and calculates optimal route to relief centres in case of emergency.
 
-module.exports = {
-  resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
-  },
-  module: {
-    rules: [
-      {
-        test: [/\.jsx?$/, /\.tsx?$/],
-        use: 'babel-loader',
-        exclude: /node_modules/,
-      },
-    ],
-  },
-}
+## [ Prerequisities ]
+
+Node packages can be installed using :
+
+```
+npm install
 ```
 
-**Use `babel-loader` to `/\.tsx?$/` ?!**
+## [ Run ]
 
-Yes, `babel-loader`. See `.babelrc`:
+To start the app simply run :
 
-```json
-{
-  "presets": [
-    "@babel/env",
-    "@babel/react",
-    "@babel/typescript"
-  ]
-}
+```
+npm start
 ```
 
-Thanks to `@babel/preset-typescript`, we can handle `/\.tsx?$/` files same as `/\.jsx?$/` files :)
-
-## Usage
-
-```bash
-# installation
-$ yarn
-
-# development mode
-# it automatically opens `http://localhost:8080` in your default browser,
-# and you'll see "Webpack + TypeScript + React = ❤️"
-$ yarn dev
-
-# check types
-$ yarn check-types
-
-# production build
-$ yarn build
-
-# production mode
-$ yarn start
-```
+and open http://localhost:3000 in any modern browser.

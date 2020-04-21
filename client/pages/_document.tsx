@@ -32,7 +32,7 @@ MyDocument.getInitialProps = async (ctx): Promise<DocumentInitialProps> => {
   const originalRenderPage = ctx.renderPage;
 
   ctx.renderPage = (): RenderPageResult | Promise<RenderPageResult> => originalRenderPage({
-    enhanceApp: (App) => (props): JSX.Element => sheets.collect(<App {...props} />),
+    enhanceApp: (App) => (props): JSX.Element => sheets.collect(<App {...props} />)
   });
 
   const initialProps = await Document.getInitialProps(ctx);
@@ -41,8 +41,8 @@ MyDocument.getInitialProps = async (ctx): Promise<DocumentInitialProps> => {
     ...initialProps,
     styles: [
       ...React.Children.toArray(initialProps.styles),
-      sheets.getStyleElement(),
-    ],
+      sheets.getStyleElement()
+    ]
   };
 };
 

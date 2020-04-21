@@ -1,5 +1,8 @@
 # dependencies
 node_modules/
 
+# public folder
+public/
+
 # misc
 next-env.d.ts

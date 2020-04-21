@@ -2,14 +2,14 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Head from 'next/head';
 import React from 'react';
 import Header from '../components/common/Header';
-import MapPage from '../components/Map';
+import AboutPage from '../components/About';
 import themes from '../constants/themes';
 
-const THEME = createMuiTheme(themes.th002);
+const THEME = createMuiTheme(themes.th006);
 
-const PAGE_TITLE = 'Map';
+const PAGE_TITLE = 'Add';
 
-const Map = (): JSX.Element => (
+const About = (): JSX.Element => (
   <>
     <Head>
       <title>
@@ -19,8 +19,9 @@ const Map = (): JSX.Element => (
     </Head>
     <ThemeProvider theme={THEME}>
       <Header pageTitle={PAGE_TITLE} />
+      <AboutPage />
     </ThemeProvider>
   </>
 );
 
-export default Map;
+export default About;

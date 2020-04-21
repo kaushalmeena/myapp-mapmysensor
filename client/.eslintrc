@@ -1,6 +1,18 @@
 {
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  },
   "extends": [
+    "prettier",
+    "prettier/@typescript-eslint",
+    "prettier/react",
     "airbnb-typescript",
+    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
-  ]
+  ],
+  "plugins": ["prettier", "@typescript-eslint"],
+  "rules": {
+    "comma-dangle": ["error", "never"]
+  }
 }

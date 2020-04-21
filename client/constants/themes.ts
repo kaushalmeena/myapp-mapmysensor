@@ -1,51 +1,59 @@
 import {
-  blue, blueGrey, deepOrange, deepPurple, indigo, pink, purple, red, teal,
+  blue,
+  blueGrey,
+  deepOrange,
+  deepPurple,
+  indigo,
+  pink,
+  purple,
+  red,
+  teal
 } from '@material-ui/core/colors';
-import IThemes from '../types/themes';
+import Themes from '../types/themes';
 
-const THEMES: IThemes = {
+const THEMES: Themes = {
   th001: {
     palette: {
       primary: blueGrey,
-      secondary: pink,
-    },
+      secondary: pink
+    }
   },
   th002: {
     palette: {
       primary: deepPurple,
-      secondary: blue,
-    },
+      secondary: blue
+    }
   },
   th003: {
     palette: {
       primary: purple,
-      secondary: red,
-    },
+      secondary: red
+    }
   },
   th004: {
     palette: {
       primary: indigo,
-      secondary: pink,
-    },
+      secondary: pink
+    }
   },
   th005: {
     palette: {
       primary: blue,
-      secondary: red,
-    },
+      secondary: red
+    }
   },
   th006: {
     palette: {
       primary: deepOrange,
-      secondary: red,
-    },
+      secondary: red
+    }
   },
   th007: {
     palette: {
       primary: teal,
-      secondary: red,
-    },
-  },
+      secondary: red
+    }
+  }
 };
 
 export default THEMES;

@@ -2,134 +2,172 @@ import {
   AppBar,
   Box,
   Divider,
+  Drawer,
   Icon,
   IconButton,
+  Link,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Menu,
+  Popover,
   Toolbar,
-  Typography,
+  Typography
 } from '@material-ui/core';
+import NextLink from 'next/link';
 import React from 'react';
-import Link from 'next/link';
-import { generateUniqueKey } from '../../utils';
+
+type HeaderProps = {
+  pageTitle: string;
+};
 
 const PAGE_LINKS = [
   {
     title: 'Home',
     icon: 'home',
-    href: '/',
+    href: '/'
   },
   {
     title: 'Map',
     icon: 'map',
-    href: '/map',
+    href: '/map'
   },
   {
     title: 'Search',
     icon: 'search',
-    href: '/search',
+    href: '/search'
   },
   {
     title: 'Route',
     icon: 'timeline',
-    href: '/route',
+    href: '/route'
   },
   {
     title: 'About',
     icon: 'info_outline',
-    href: '/about',
-  },
+    href: '/about'
+  }
 ];
 
-const OTHER_LINKS = [
-  {
-    title: 'Github',
-    icon: 'link',
-    href: 'https://github.com/kaushalmeena1996/myapp-mapmysensor',
-  },
-];
-
-const Header: React.FunctionComponent = (): JSX.Element => {
+const Header: React.FunctionComponent<HeaderProps> = (props: HeaderProps): JSX.Element => {
+  const [drawerOpen, setDrawerOpen] = React.useState<boolean>(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>): void => {
+  const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>): void => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = (): void => {
+  const handlePopoverClose = (): void => {
     setAnchorEl(null);
   };
+
+  const handleDrawerOpen = (): void => {
+    setDrawerOpen(true);
+  };
+
+  const handleDrawerClose = (): void => {
+    setDrawerOpen(false);
+  };
+
+  const { pageTitle } = props;
+
+  const popoverOpen = Boolean(anchorEl);
+  const id = popoverOpen ? 'user-popover' : undefined;
 
   return (
     <>
       <AppBar position="sticky">
         <Toolbar>
-          <Box flexGrow={1}>
-            <Typography variant="h6">
-              mapmysensor
-              <Box color="primary.dark" component="span">
-                .com
-              </Box>
-            </Typography>
+          <IconButton
+            edge="start"
+            aria-label="Menu"
+            color="inherit"
+            title="Menu"
+            onClick={handleDrawerOpen}
+          >
+            <Icon>menu</Icon>
+          </IconButton>
+          <Box flexGrow={1} mx={1}>
+            <Typography variant="h6">{pageTitle}</Typography>
           </Box>
-          <Box display={{ xs: 'none', sm: 'block' }}>
-            {PAGE_LINKS.map((link) => (
-              <Link key={`page-link-${generateUniqueKey()}`} href={link.href}>
-                <IconButton
-                  aria-label="Link"
-                  color="inherit"
-                  title={link.title}
-                >
-                  <Icon>{link.icon}</Icon>
-                </IconButton>
-              </Link>
-            ))}
-          </Box>
-          <Box display={{ xs: 'block', sm: 'none' }}>
+          <Box>
             <IconButton
-              aria-label="More"
+              aria-describedby={id}
+              aria-label="User"
               aria-haspopup="true"
               color="inherit"
-              onClick={handleClick}
+              title="User"
+              onClick={handlePopoverOpen}
             >
-              <Icon>more_vert</Icon>
+              <Icon>account_circle</Icon>
             </IconButton>
           </Box>
-          <Menu
-            keepMounted
-            variant="menu"
-            autoFocus={false}
+          <Popover
+            id={id}
+            anchorOrigin={{
+              vertical: 'center',
+              horizontal: 'center'
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right'
+            }}
             anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
+            open={popoverOpen}
+            onClose={handlePopoverClose}
           >
-            {PAGE_LINKS.map((link) => (
-              <Link key={`page-link-${generateUniqueKey()}`} href={link.href}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <Icon>{link.icon}</Icon>
-                  </ListItemIcon>
-                  <ListItemText primary={link.title} />
-                </ListItem>
-              </Link>
-            ))}
+            <Box px={2} py={1}>
+              <Typography variant="subtitle2" color="textSecondary">
+                Logged in as
+              </Typography>
+              <Typography>kaushal.meena@gmail.com</Typography>
+              <Typography variant="body2" color="primary" align="center">
+                [admin]
+              </Typography>
+            </Box>
             <Divider />
-            {OTHER_LINKS.map((link) => (
-              <a key={`other-link-${generateUniqueKey()}`} href={link.href}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <Icon>{link.icon}</Icon>
-                  </ListItemIcon>
-                  <ListItemText primary={link.title} />
-                </ListItem>
-              </a>
-            ))}
-          </Menu>
+            <NextLink href="logout">
+              <ListItem button dense>
+                <ListItemIcon>
+                  <Icon>exit_to_app</Icon>
+                </ListItemIcon>
+                <ListItemText primary="Logout" />
+              </ListItem>
+            </NextLink>
+          </Popover>
         </Toolbar>
       </AppBar>
+      <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
+        <Box width={250}>
+          <Box display="flex" flexDirection="row" justifyContent="center" p={2}>
+            <Typography variant="h5">mapmy</Typography>
+            <Typography variant="h5" color="primary">sensor</Typography>
+          </Box>
+          <Divider />
+          {PAGE_LINKS.map((link) => (
+            <NextLink key={`link-${link.title}`} href={link.href}>
+              <ListItem button>
+                <ListItemIcon>
+                  <Icon>{link.icon}</Icon>
+                </ListItemIcon>
+                <ListItemText primary={link.title} />
+              </ListItem>
+            </NextLink>
+          ))}
+          <Divider />
+          <Link
+            underline="none"
+            color="textPrimary"
+            href="https://github.com/kaushalmeena1996/myapp-mapmysensor"
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <Icon>link</Icon>
+              </ListItemIcon>
+              <ListItemText primary="GitHub" />
+            </ListItem>
+          </Link>
+        </Box>
+      </Drawer>
     </>
   );
 };

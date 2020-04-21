@@ -1,33 +1,13 @@
-import { Box, Container, Grid, Icon, TextField } from "@material-ui/core";
-import React, { useState } from "react";
+import { Container, Box } from '@material-ui/core';
+import React from 'react';
+import Table from '../common/Table';
 
-import data from "./mapmysensor.json";
-
-const columns = ["Name", "Category", "Type", "Action"];
-
-const tableData = Object.values(data.nodes);
-
-const Search: React.FunctionComponent = (): JSX.Element => {
-  const [value, setValue] = useState("");
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setValue(event.target.value);
-  };
-
-  return (
-    <Container>
-      <Box my={2}>
-        <Box
-          bgcolor="background.paper"
-          borderRadius={2}
-          boxShadow={1}
-          p={2}
-        >
-
-        </Box>
-      </Box>
-    </Container>
-  );
-};
+const Search: React.FunctionComponent = (): JSX.Element => (
+  <Container>
+    <Box bgcolor="background.default" borderRadius={2} boxShadow={1} my={2} p={2}>
+      <Table />
+    </Box>
+  </Container>
+);
 
 export default Search;
