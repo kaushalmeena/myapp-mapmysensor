@@ -8,7 +8,13 @@ import React from 'react';
 
 const About: React.FunctionComponent = (): JSX.Element => (
   <Container>
-    <Box bgcolor="background.default" borderRadius={2} boxShadow={1} my={2} p={2}>
+    <Box
+      bgcolor="background.default"
+      borderRadius={2}
+      boxShadow={1}
+      my={2}
+      p={2}
+    >
       <Typography variant="h4" component="h1">
         mapmysensor
       </Typography>

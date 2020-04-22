@@ -42,6 +42,11 @@ const PAGE_LINKS = [
     href: '/route'
   },
   {
+    title: 'Test',
+    icon: 'build',
+    href: '/test'
+  },
+  {
     title: 'About',
     icon: 'info_outline',
     href: '/about'
@@ -116,11 +121,20 @@ const Header: React.FunctionComponent<HeaderProps> = (props: HeaderProps): JSX.E
             onClose={handlePopoverClose}
           >
             <Box px={2} py={1}>
-              <Typography variant="subtitle2" color="textSecondary">
+              <Typography
+                variant="subtitle2"
+                color="textSecondary"
+              >
                 Logged in as
               </Typography>
-              <Typography>kaushal.meena@gmail.com</Typography>
-              <Typography variant="body2" color="primary" align="center">
+              <Typography>
+                kaushal.meena@gmail.com
+              </Typography>
+              <Typography
+                variant="body2"
+                color="primary"
+                align="center"
+              >
                 [admin]
               </Typography>
             </Box>
@@ -136,11 +150,24 @@ const Header: React.FunctionComponent<HeaderProps> = (props: HeaderProps): JSX.E
           </Popover>
         </Toolbar>
       </AppBar>
-      <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
+      <Drawer
+        anchor="left"
+        open={drawerOpen}
+        onClose={handleDrawerClose}
+      >
         <Box width={250}>
           <Box display="flex" flexDirection="row" justifyContent="center" p={2}>
-            <Typography variant="h5">mapmy</Typography>
-            <Typography variant="h5" color="primary">sensor</Typography>
+            <Typography
+              variant="h5"
+            >
+              mapmy
+            </Typography>
+            <Typography
+              variant="h5"
+              color="primary"
+            >
+              sensor
+            </Typography>
           </Box>
           <Divider />
           {PAGE_LINKS.map((link) => (
